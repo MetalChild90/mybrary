@@ -10,6 +10,7 @@ const bodyParser = require('body-parser');
 
 const indexRouter = require('./routes/index');
 const authorsRouter = require('./routes/authors');
+const booksRouter = require('./routes/books');
 
 app.set('view engine', 'ejs'); //że tego chcemy używać
 app.set('views', __dirname + '/views'); //nakierowanie na folder
@@ -30,5 +31,6 @@ db.once('open', () => console.log('Connected to mongoose'));
 
 app.use('/', indexRouter);
 app.use('/authors', authorsRouter);
+app.use('/books', booksRouter);
 
 app.listen(process.env.PORT || 3000); // pierwsze to już bardziej zaawansowane, kiedy jest hosting
