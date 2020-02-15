@@ -7,6 +7,7 @@ const app = express();
 const expressLayouts = require('express-ejs-layouts');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 
 const indexRouter = require('./routes/index');
 const authorsRouter = require('./routes/authors');
@@ -16,6 +17,7 @@ app.set('view engine', 'ejs'); //że tego chcemy używać
 app.set('views', __dirname + '/views'); //nakierowanie na folder
 app.set('layout', 'layouts/layout'); //że tego chcemy używać
 app.use(expressLayouts);
+app.use(methodOverride('_method'))
 app.use(express.static('public'));
 app.use(cors());
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }));
